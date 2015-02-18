@@ -2,7 +2,7 @@
 <extension key="org.ncba.eventregistration" type="module">
   <file>eventregistration</file>
   <name>Event Registration Customizations</name>
-  <description>Event Registration Public Form Customizations</description>
+  <description>Event Registration Public Form Customizations. NOTE: this depends on com.ginkgostreet.conditionalfields</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>ginkgoMZD</author>
@@ -20,7 +20,7 @@
   <compatibility>
     <ver>4.2</ver>
   </compatibility>
-  <comments>This is a custom module</comments>
+  <comments>This is a custom module. NOTE: this depends on com.ginkgostreet.conditionalfields</comments>
   <civix>
     <namespace>CRM/Eventregistration</namespace>
   </civix>
