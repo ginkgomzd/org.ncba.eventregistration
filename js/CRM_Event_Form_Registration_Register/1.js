@@ -58,8 +58,6 @@ cj(function($) {
   // parse show/hide rules
   var showHideObjArr = {};
   $.each(showHideRules, function(index, obj) {
-    console.log('showHideRules.each')
-    console.dir(obj);
     // register triggers for each dependent
     $.each(obj.dependents, function(i, dependentName) {
       if (!showHideObjArr.hasOwnProperty(dependentName)) {
