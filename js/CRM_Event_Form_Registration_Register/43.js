@@ -1,12 +1,28 @@
 cj(function($) {
-  // by default, hide the following fields, identified by the field name (e.g.,
+
+  var fieldMap = {
+          CDFYESNO: 'custom_28',
+          DISCOUNT: 'discountcode',
+          EARLYREG: 'price_56',
+          FULLREG: 'price_57',
+          THURS: 'price_41\\[183\\]',
+          FRI: 'price_42\\[184\\]',
+          SAT: 'price_43\\[185\\]',
+          YOUNGPROF: 'price_48\\[190\\]',
+          TOUR: 'price_49\\[191\\]',
+          OPENPARTY: 'price_50\\[192\\]',
+          AWRDLUNCH: 'price_51\\[193\\]',
+          BLOCKPARTY: 'price_52\\[194\\]',
+        };
+
+  // by default, hide the following fields, identified by the field _NAME_ (e.g.,
   // <input name="xyz">)
   var hiddenByDefault = [
-    'discountcode',
-    'price_2',
-//    'price_103\\[457\\]',
-//    'price_103\\[458\\]',
-//    'price_103\\[459\\]'
+    // always hide discount code and the "I am ..attending CDF..." only applies to Annual Confer.
+    fieldMap.DISCOUNT, fieldMap.CDFYESNO,
+    //hide the special events:
+    fieldMap.YOUNGPROF, fieldMap.TOUR, fieldMap.OPENPARTY, fieldMap.AWRDLUNCH, fieldMap.BLOCKPARTY,
+//    'price_xx\\[xx\\]',
   ];
 
   /*
@@ -28,15 +44,30 @@ cj(function($) {
    * should be straightforward except for the case of advanced multiselects.
    */
   var showHideRules = [
-//    {
-//      name:'price_94',
-//      value:'425', // Passport
-//      dependents:['price_97', 'price_98']
-//    },
     {
-      name:'discountcode',
+      name: fieldMap.EARLYREG,
       value:'',
-      dependents:[]
+      dependents:[fieldMap.THURS, fieldMap.FRI, fieldMap.SAT]
+    },
+    {
+      name: fieldMap.FULLREG,
+      value:'',
+      dependents:[fieldMap.THURS, fieldMap.FRI, fieldMap.SAT]
+    },
+    {
+      name: fieldMap.THURS,
+      value:'1',
+      dependents:[fieldMap.AWRDLUNCH, fieldMap.BLOCKPARTY]
+    },
+    {
+      name: fieldMap.FRI,
+      value:'1',
+      dependents:[fieldMap.YOUNGPROF, fieldMap.TOUR, fieldMap.OPENPARTY, fieldMap.AWRDLUNCH, fieldMap.BLOCKPARTY]
+    },
+    {
+      name: fieldMap.SAT,
+      value:'1',
+      dependents:[fieldMap.YOUNGPROF, fieldMap.TOUR, fieldMap.OPENPARTY]
     }
   ];
 
