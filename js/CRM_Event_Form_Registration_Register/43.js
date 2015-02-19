@@ -51,7 +51,6 @@ cj(function($) {
 
   // hide dependent fields by default
   $.each(hiddenByDefault, function(index, fieldName) {
-    alert(fieldName);
     setFieldDisplay(fieldName, 0);
   });
 
