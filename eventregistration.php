@@ -110,6 +110,6 @@ function eventregistration_civicrm_alterSettingsFolders(&$metaDataFolders = NULL
 function eventregistration_civicrm_conditionalFields(array &$formList) {
   $formList['CRM_Event_Form_Registration_Register'] = array(
     'extension' => 'org.ncba.eventregistration',
-    'entityID' => '1',
+    'entityID' => '43',
   );
 }
