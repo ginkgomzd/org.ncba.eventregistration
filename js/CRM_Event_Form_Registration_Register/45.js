@@ -13,6 +13,7 @@ cj(function($) {
           TUE: 'price_45\\[187\\]',
           WED: 'price_46\\[188\\]',
           WELCOME: 'price_47\\[189\\]',
+          MILESTONE: 'custom_25',
         };
 
   // by default, hide the following fields, identified by the field name (e.g.,
@@ -20,6 +21,7 @@ cj(function($) {
   var hiddenByDefault = [
     fieldMap.DISCOUNT,
     fieldMap.WELCOME,
+    fieldMap.MILESTONE
 //    'price_103\\[459\\]'
   ];
 
