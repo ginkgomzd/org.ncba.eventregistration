@@ -1,11 +1,25 @@
 cj(function($) {
+
+  //hide the total which is broken by this extension;
+  var priceTotal = cj('div#pricevalue').first().closest('.crm-section');
+  priceTotal.hide();
+
+  var fieldMap = {
+          CDFYESNO: 'custom_28',
+          DISCOUNT: 'discountcode',
+          EARLYREG: 'price_53',
+          FULLREG: 'price_54',
+          MON: 'price_44\\[186\\]',
+          TUE: 'price_45\\[187\\]',
+          WED: 'price_46\\[188\\]',
+          WELCOME: 'price_47\\[189\\]',
+        };
+
   // by default, hide the following fields, identified by the field name (e.g.,
   // <input name="xyz">)
   var hiddenByDefault = [
-    'discountcode',
-    'price_2',
-//    'price_103\\[457\\]',
-//    'price_103\\[458\\]',
+    fieldMap.DISCOUNT,
+    fieldMap.WELCOME,
 //    'price_103\\[459\\]'
   ];
 
@@ -34,9 +48,14 @@ cj(function($) {
 //      dependents:['price_97', 'price_98']
 //    },
     {
-      name:'discountcode',
-      value:'',
-      dependents:[]
+      name: fieldMap.FULLREG,
+      value: '',
+      dependents: [fieldMap.MON, fieldMap.TUE, fieldMap.WED]
+    },
+    {
+      name: fieldMap.EARLYREG,
+      value: '',
+      dependents: [fieldMap.MON, fieldMap.TUE, fieldMap.WED]
     }
   ];
 

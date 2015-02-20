@@ -1,5 +1,9 @@
 cj(function($) {
 
+  //hide the total which is broken by this extension;
+  var priceTotal = cj('div#pricevalue').first().closest('.crm-section');
+  priceTotal.hide();
+
   var fieldMap = {
           CDFYESNO: 'custom_28',
           DISCOUNT: 'discountcode',
