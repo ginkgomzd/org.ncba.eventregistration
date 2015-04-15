@@ -110,3 +110,19 @@ function eventregistration_civicrm_alterSettingsFolders(&$metaDataFolders = NULL
 function eventregistration_civicrm_conditionalFields(array &$enableForExtensions) {
   $enableForExtensions[] = 'org.ncba.eventregistration';
 }
+
+function eventregistration_civicrm_buildForm($formName, &$form) {
+  if ($formName == 'CRM_Event_Form_Registration_Register') {
+    $formID = $form->get('id');
+    if($formID == 43 || $formID == 45 || $formID == 1) {
+      $ext = 'org.ncba.eventregistration';
+      $baseDir = CRM_Extension_System::singleton()->getMapper()->keyToBasePath($ext);
+      $jsFile = "js/validation_{$formID}.js";
+      if (file_exists("{$baseDir}/{$jsFile}")) {
+        $ccr = CRM_Core_Resources::singleton();
+        $ccr->addScriptFile('org.ncba.eventregistration', $jsFile);
+      }
+    }
+  }
+}
+
