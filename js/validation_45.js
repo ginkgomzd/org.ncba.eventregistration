@@ -9,20 +9,13 @@ cj(function($) {
     RECEPTION: 'price_47_189',
   };
 
- var btnSubmit = $('#crm-submit-buttons .form-submit');
-
-  btnSubmit.click(function(ev) {
-    ev.preventDefault();
-
-    if (verifyMinimumSelection()) {
-console.log('verified');
-      $('form#Register').submit();
-    } else {
+  $('form#Register').submit(function(ev) {
+    if (!verifyMinimumSelection()) {
 console.log('warn');
+      ev.preventDefault();
       warnMinimumSelection();
     }
   });
-  
 
 function verifyMinimumSelection() {
   var anySelection = false;
